@@ -128,6 +128,6 @@ with r.walk(include=heads) as walker:
             visitors.remove(dead.pop())
 
 duration = time.time() - start
-for b in [b for b in sorted(branches, key=lambda _b: _b.lookup().date, reverse=True) if b != main]:
+for b in [b for b in sorted(branches, key=lambda _b: _b.resolve().date, reverse=True) if b != main]:
     print '%s [%d ahead] [%d behind] on %s' % (b.name, ahead.counts[b], behinds[b].count, main.name)
 print 'runtime: %.3f seconds' % duration
