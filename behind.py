@@ -30,5 +30,6 @@ duration = time.time() - start
 
 for rhead, counts in stats.items():
     ref, head = rhead
-    print '%s (%s) [%d ahead] [%d behind] on %s' % (ref.name, head.hash, counts[0], counts[1], main.name)
+    print '%s (%s) [%d ahead] [%d behind] on %s' % (
+        ref.name, head.hash, counts[0], counts[1], main.name)
 print 'runtime: %.3f seconds' % duration
