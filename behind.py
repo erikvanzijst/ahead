@@ -4,7 +4,7 @@ import sys
 import time
 
 from orochi.repo import Repo
-from orochi.utils import aheadandbehind
+from orochi.utils import aheadandbehindperhead
 
 path = '.'
 bname = None
@@ -25,9 +25,10 @@ else:
     branches = set(r.branches()) - {main}
 
 start = time.time()
-stats = aheadandbehind(r, branches, main)
+stats = aheadandbehindperhead(r, branches, main)
 duration = time.time() - start
 
-for b, counts in sorted(stats.items(), key=lambda _tup: _tup[0].lookup().date, reverse=True):
-    print '%s [%d ahead] [%d behind] on %s' % (b.name, counts[0], counts[1], main.name)
+for rhead, counts in stats.items():
+    ref, head = rhead
+    print '%s (%s) [%d ahead] [%d behind] on %s' % (ref.name, head.hash, counts[0], counts[1], main.name)
 print 'runtime: %.3f seconds' % duration
