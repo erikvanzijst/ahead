@@ -78,7 +78,6 @@ for sha, parents in walk(f, set().union(live.keys(), based.keys())):
                 break
 
 duration = time.time() - start
-for ref in refs:
-    print '%s: %d ahead / %d behind' % (ref.name, ref.ahead,
-                                        ref.behind)
+for ref in sorted(refs, key=lambda r: r.name):
+    print '%s: %d ahead / %d behind' % (ref.name, ref.ahead, ref.behind)
 print 'runtime: %.3f seconds' % duration
