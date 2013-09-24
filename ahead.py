@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+#
+# Oldest, clumsiest implementation. Orochi cset-based with parallel visitors.
 from collections import defaultdict
 
 import sys

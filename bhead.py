@@ -7,7 +7,7 @@
 #  [..]
 #  runtime: 0.187 seconds
 #
-#  (ahead)21:03 ~/work/ahead (master)$ cat fixtures/bb.txt | python ahead2.py
+#  (ahead)21:03 ~/work/ahead (master)$ cat fixtures/bb.txt | python bhead.py
 #  [..]
 #  runtime: 0.045 seconds
 from collections import namedtuple
