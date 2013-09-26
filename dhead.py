@@ -54,7 +54,7 @@ for sha, parents in walk(f, set().union(live.keys(), based.keys())):
         for p in parents:
             based[p].update(basedrefs)
 
-    try:
+    if sha in live:
         liverefs = live.pop(sha)
         if on_main:
             basedrefs.update(liverefs)
@@ -65,8 +65,6 @@ for sha, parents in walk(f, set().union(live.keys(), based.keys())):
                 live[p].update(liverefs)
             for ref in liverefs:
                 ref.ahead += 1
-    except KeyError:
-        liverefs = set()
     if on_main:
         for r in refs.difference(basedrefs):
             r.behind += 1
